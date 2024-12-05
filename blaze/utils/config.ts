@@ -5,13 +5,13 @@ export const PROVIDER = new JsonRpcProvider("https://rpc.blaze.soniclabs.com", {
     chainId: 57054,
 });
 
-export const MIN_AMOUNT_TO_SWAP_PERCENT = 2e17;
+export const MIN_AMOUNT_TO_SWAP_IN_TOKENS = 2e17;
 
 export const MIN_MULTISWAP_AMOUNT = 1;
 export const MAX_MULTISWAP_AMOUNT = 10;
 
 // 80% - 95% of the balance
-// ! cannot be 0 and more than 1003
+// ! cannot be 0 and more than 1
 export const MIN_AMOUNT_TO_SWAP = 0.8;
 export const MAX_AMOUNT_TO_SWAP = 0.95;
 

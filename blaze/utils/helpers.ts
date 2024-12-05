@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { MAX_AMOUNT_TO_SWAP, MAX_MULTISWAP_AMOUNT, MIN_AMOUNT_TO_SWAP, MIN_AMOUNT_TO_SWAP_PERCENT, MIN_MULTISWAP_AMOUNT, PROVIDER, TOKENS_TO_CLAIM } from "./config";
+import { MAX_AMOUNT_TO_SWAP, MAX_MULTISWAP_AMOUNT, MIN_AMOUNT_TO_SWAP, MIN_AMOUNT_TO_SWAP_IN_TOKENS, MIN_MULTISWAP_AMOUNT, PROVIDER, TOKENS_TO_CLAIM } from "./config";
 import { ERC20_ABI } from "./ERC20";
 import chalk from "chalk";
 import { AxiosInstance } from "axios";
@@ -34,8 +34,8 @@ export const getRandomTokensAmount = async (tokenAddress: string, walletAddress:
     const randomAmount = Math.random() * (max - min) + min;
 
     let amountTokensIn = ethers.parseUnits(randomAmount.toFixed(18), 18).toString(); 
-	if (Number(randomAmount) < MIN_AMOUNT_TO_SWAP_PERCENT) {
-		amountTokensIn = MIN_AMOUNT_TO_SWAP_PERCENT.toString();
+	if (Number(randomAmount) < MIN_AMOUNT_TO_SWAP_IN_TOKENS) {
+		amountTokensIn = MIN_AMOUNT_TO_SWAP_IN_TOKENS.toString();
 	}
 
     return amountTokensIn;
