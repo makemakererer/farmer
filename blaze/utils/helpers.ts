@@ -34,10 +34,7 @@ export const getRandomTokensAmount = async (tokenAddress: string, walletAddress:
     const randomAmount = Math.random() * (max - min) + min;
 
     let amountTokensIn = ethers.parseUnits(randomAmount.toFixed(18), 18).toString(); 
-	if (Number(randomAmount) < MIN_AMOUNT_TO_SWAP_IN_TOKENS) {
-		amountTokensIn = MIN_AMOUNT_TO_SWAP_IN_TOKENS.toString();
-	}
-
+	
     return amountTokensIn;
 }
 
