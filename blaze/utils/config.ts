@@ -5,25 +5,27 @@ export const PROVIDER = new JsonRpcProvider("https://rpc.blaze.soniclabs.com", {
     chainId: 57054,
 });
 
+export const MIN_AMOUNT_TO_SWAP_PERCENT = 2e17;
 
-// 50% - 90% of the balance
+export const MIN_MULTISWAP_AMOUNT = 1;
+export const MAX_MULTISWAP_AMOUNT = 10;
+
+// 80% - 95% of the balance
 // ! cannot be 0 and more than 1003
-export const MIN_AMOUNT_TO_SWAP = 0.5;
-export const MAX_AMOUNT_TO_SWAP = 0.9;
+export const MIN_AMOUNT_TO_SWAP = 0.8;
+export const MAX_AMOUNT_TO_SWAP = 0.95;
 
 //! delays in seconds
-export const MIN_DELAY_BETWEEN_SWAPS = 2;
-export const MAX_DELAY_BETWEEN_SWAPS = 10;
+export const MIN_DELAY_BETWEEN_SWAPS = 1;
+export const MAX_DELAY_BETWEEN_SWAPS = 3;
 
-export const MIN_DELAY_BETWEEN_REQUESTS_GETTING_TOKENS = 4;
-export const MAX_DELAY_BETWEEN_REQUESTS_GETTING_TOKENS = 7;
+export const MIN_DELAY_BETWEEN_REQUESTS_GETTING_TOKENS = 2;
+export const MAX_DELAY_BETWEEN_REQUESTS_GETTING_TOKENS = 3;
 
-export const MIN_DELAY_BETWEEN_ACCOUNTS = 5;
-export const MAX_DELAY_BETWEEN_ACCOUNTS = 10;
+export const MIN_DELAY_BETWEEN_ACCOUNTS = 3;
+export const MAX_DELAY_BETWEEN_ACCOUNTS = 5;
 
 export const TOKENS_TO_CLAIM = ["Coral", "Diamond", "Fluorite", "Malachite", "Obsidian", "Onyx", "Opal", "Quartz", "Ruby", "Topaz"];
-
-export const BALANCE_OF_ABI = "function balanceOf(address) view returns (uint256)";
 
 export const ROUTER_ADDRESS = "0x086d426f8b653b88a2d6d03051c8b4ab8783be2b";
 

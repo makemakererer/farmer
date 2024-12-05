@@ -1,6 +1,6 @@
-import { PROVIDER } from "./utils/config";
+import { MAX_MULTISWAP_AMOUNT, MIN_MULTISWAP_AMOUNT, PROVIDER } from "./utils/config";
 import { ethers } from "ethers";
-import { getRandomToken, loadFileLines, log } from "./utils/helpers";
+import { getRandomAmountMultiswap, getRandomToken, loadFileLines, log } from "./utils/helpers";
 import { swapTokens } from "./swapTokens";
 import { claimTokens } from "./getTokens";
 
@@ -23,16 +23,23 @@ const startBot = async () => {
         log.start(wallet.address);
 
         await claimTokens(privateKey, proxy, "Sonic");
+
         for (let j = 0; j < 4; j++) {
+            const amountMultiswaps = getRandomAmountMultiswap();
+
             let tokenIn = getRandomToken();
-            let tokenOut = getRandomToken();
-    
-            while (tokenIn === tokenOut) tokenOut = getRandomToken();
 
             const result = await claimTokens(privateKey, proxy, tokenIn);
             if (result.includes("too many request")) break;
 
-            await swapTokens(wallet, tokenIn, tokenOut);
+            for (let k = 0; k < amountMultiswaps; k++) {
+                let tokenOut = getRandomToken();
+                
+                while (tokenIn === tokenOut) tokenOut = getRandomToken();
+
+                await swapTokens(wallet, tokenIn, tokenOut);
+                tokenIn = tokenOut;
+            }
         }
     }
 
